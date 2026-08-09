@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exceldoor — Aperçu des composants (Phase 1)</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<style>
+  .preview-block { margin-bottom: var(--space-7); }
+  .preview-block__label {
+    font-size: var(--fs-caption);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: var(--space-3);
+    font-weight: var(--fw-medium);
+  }
+  .swatches { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+  .swatch { width: 96px; }
+  .swatch__color { height: 56px; border-radius: var(--radius-sm); margin-bottom: var(--space-1); }
+  .swatch__label { font-size: var(--fs-caption); color: var(--text-muted); }
+  .row { display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav__inner">
+    <a href="#" class="nav__logo">Exceldoor</a>
+    <div class="nav__links">
+      <a href="#">Applications</a>
+      <a href="#">Devenir affilié</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="nav__actions">
+      <a href="#" class="btn btn--primary">Demander mon accès</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container" style="padding-top: var(--space-6);">
+
+  <div class="preview-block">
+    <p class="preview-block__label">Aperçu des composants — Phase 1 (validation avant homepage)</p>
+    <h1 style="font-size: var(--fs-h1);">Design system Exceldoor</h1>
+    <p>Cette page n'est pas destinée aux visiteurs. Elle sert uniquement à valider les tokens et composants de base avant de construire la homepage.</p>
+  </div>
+
+  <div class="preview-block">
+    <p class="preview-block__label">Couleurs</p>
+    <div class="swatches">
+      <div class="swatch"><div class="swatch__color" style="background:var(--color-primary-800)"></div><span class="swatch__label">Primaire</span></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--color-action-600)"></div><span class="swatch__label">Action / CTA</span></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--color-signal-400)"></div><span class="swatch__label">Signal</span></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--color-ink-900)"></div><span class="swatch__label">Texte</span></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--color-ink-100); border:1px solid var(--border-light)"></div><span class="swatch__label">Fond alt.</span></div>
+    </div>
+  </div>
+
+  <div class="preview-block">
+    <p class="preview-block__label">Typographie</p>
+    <h1 style="font-size: var(--fs-display);">Titre hero (H1)</h1>
+    <h2>Titre de section (H2)</h2>
+    <h3>Sous-titre (H3)</h3>
+    <p class="section__lead">Texte de lead — sous-titre de section, un peu plus grand et plus doux.</p>
+    <p>Paragraphe standard. Des applications simples pour mieux gérer votre activité, conçues pour rester lisibles sur mobile comme sur desktop.</p>
+    <p class="field__hint">Texte d'aide / caption</p>
+  </div>
+
+  <div class="preview-block">
+    <p class="preview-block__label">Boutons</p>
+    <div class="row">
+      <button class="btn btn--primary">Demander mon accès gratuit</button>
+      <button class="btn btn--secondary">Découvrir les applications</button>
+    </div>
+  </div>
+
+  <div class="preview-block">
+    <p class="preview-block__label">Badges par catégorie</p>
+    <div class="row">
+      <span class="badge badge--restaurant">Restauration</span>
+      <span class="badge badge--quincaillerie">Quincaillerie</span>
+      <span class="badge badge--scolaire">Éducation</span>
+      <span class="badge badge--btp">BTP</span>
+      <span class="badge badge--pharmacie">Pharmacie</span>
+    </div>
+  </div>
+
+  <div class="preview-block">
+    <p class="preview-block__label">Grille d'applications (générée depuis applications.js)</p>
+    <div class="app-grid" id="app-grid"></div>
+  </div>
+
+  <div class="preview-block">
+    <p class="preview-block__label">Composant vidéo</p>
+    <div style="max-width: 480px;">
+      <div class="video-embed">
+        <div class="video-embed__play" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-block">
+    <p class="preview-block__label">Formulaire</p>
+    <div style="max-width: 420px;">
+      <div class="field">
+        <label for="prenom">Prénom</label>
+        <input type="text" id="prenom" placeholder="Mamadou">
+      </div>
+      <div class="field">
+        <label for="app">Application souhaitée</label>
+        <select id="app">
+          <option>Gestion Restaurant</option>
+          <option>Gestion Quincaillerie</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-block">
+    <p class="preview-block__label">FAQ (accordéon)</p>
+    <div style="max-width: 640px;">
+      <div class="faq-item" data-open="true">
+        <button class="faq-item__q">Comment demander un accès ?<span class="faq-item__icon">+</span></button>
+        <div class="faq-item__a">Remplissez le formulaire, nous vous contactons pour créer votre accès.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-item__q">L'essai est-il gratuit ?<span class="faq-item__icon">+</span></button>
+        <div class="faq-item__a">Oui, une période d'essai gratuite est proposée avant tout engagement.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-block">
+    <p class="preview-block__label">Section CTA finale</p>
+    <div class="cta-section">
+      <h2>Prêt à essayer Exceldoor ?</h2>
+      <p>Demandez votre accès gratuit, nous créons votre espace et vous envoyons vos identifiants.</p>
+      <button class="btn btn--primary">Demander mon accès gratuit</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <h4>Exceldoor</h4>
+        <p style="color:rgba(255,255,255,0.6); font-size: var(--fs-small);">Des applications simples pour mieux gérer votre activité.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Applications</h4>
+        <ul><li><a href="#">Restaurant</a></li><li><a href="#">Quincaillerie</a></li></ul>
+      </div>
+      <div class="footer__col">
+        <h4>Programme</h4>
+        <ul><li><a href="#">Devenir affilié</a></li></ul>
+      </div>
+    </div>
+    <div class="footer__bottom">© 2026 Exceldoor. Tous droits réservés.</div>
+  </div>
+</footer>
+
+<script src="js/config/applications.js"></script>
+<script>
+  var grid = document.getElementById('app-grid');
+  getActiveApplications().forEach(function (app) {
+    var card = document.createElement('div');
+    card.className = 'app-card';
+    card.innerHTML =
+      '<div class="app-card__accent app-card__accent--' + app.categoryKey + '"></div>' +
+      '<div class="app-card__body">' +
+        '<span class="badge badge--' + app.categoryKey + '">' + app.category + '</span>' +
+        '<h3 class="app-card__title">' + app.name + '</h3>' +
+        '<p class="app-card__desc">' + app.shortDescription + '</p>' +
+        '<a href="applications/' + app.slug + '.html" class="app-card__cta">Découvrir l\'application →</a>' +
+      '</div>';
+    grid.appendChild(card);
+  });
+
+  document.querySelectorAll('.faq-item__q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.getAttribute('data-open') === 'true';
+      item.setAttribute('data-open', isOpen ? 'false' : 'true');
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demander mon accès gratuit — Exceldoor</title>
+<meta name="description" content="Demandez votre accès gratuit à une application Exceldoor. Nous créons votre espace et vous envoyons vos identifiants.">
+
+<meta property="og:title" content="Demander mon accès gratuit — Exceldoor">
+<meta property="og:description" content="Nous créons votre espace et vous envoyons vos identifiants.">
+<meta property="og:url" content="https://exceldoor.fr/demande-acces/">
+<meta property="og:type" content="website">
+
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+
+<a href="#main" class="visually-hidden">Aller au contenu principal</a>
+
+<nav class="nav">
+  <div class="container nav__inner">
+    <a href="../" class="nav__logo">Exceldoor</a>
+    <div class="nav__links">
+      <a href="../applications/">Applications</a>
+      <a href="../devenir-affilie/">Devenir affilié</a>
+      <a href="./" aria-current="page">Demander un accès</a>
+    </div>
+    <div class="nav__actions">
+      <a href="./" class="btn btn--primary">Demander mon accès</a>
+      <button class="nav__toggle" data-nav-toggle aria-label="Ouvrir le menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="nav__mobile">
+    <a href="../applications/">Applications</a>
+    <a href="../devenir-affilie/">Devenir affilié</a>
+    <a href="./">Demander un accès</a>
+    <button data-nav-close class="btn btn--secondary btn--block" style="margin-top: var(--space-4);">Fermer</button>
+  </div>
+</nav>
+
+<main id="main">
+
+  <section class="section">
+    <div class="container">
+      <div style="max-width: 720px; margin: 0 auto;">
+
+        <div style="text-align: center; margin-bottom: var(--space-6);">
+          <span class="hero__eyebrow">Accès gratuit</span>
+          <h1 style="font-size: var(--fs-h1);">Demandez votre accès gratuit</h1>
+          <p class="hero__lead" style="margin: var(--space-2) auto 0;">Nous créons votre espace et vous envoyons vos identifiants. Aucun engagement, aucune carte bancaire.</p>
+        </div>
+
+        <!-- FORMULAIRE -->
+        <div class="form-card" id="form-card">
+          <form id="access-request-form" novalidate>
+
+            <!-- Honeypot anti-spam — invisible pour un humain (§36) -->
+            <div class="field field--honeypot" aria-hidden="true">
+              <label for="website">Ne pas remplir ce champ</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="prenom">Prénom *</label>
+                <input type="text" id="prenom" name="prenom" data-required placeholder="Mamadou" autocomplete="given-name">
+              </div>
+              <div class="field">
+                <label for="nom">Nom *</label>
+                <input type="text" id="nom" name="nom" data-required placeholder="Diop" autocomplete="family-name">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="entreprise">Entreprise / Établissement</label>
+              <input type="text" id="entreprise" name="entreprise" placeholder="Le Baobab Bar & Restaurant" autocomplete="organization">
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" data-required placeholder="mamadou@exemple.com" autocomplete="email">
+              </div>
+              <div class="field">
+                <label for="telephone">Téléphone / WhatsApp *</label>
+                <input type="tel" id="telephone" name="telephone" data-required placeholder="+221 77 000 00 00" autocomplete="tel">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="application">Application souhaitée *</label>
+              <select id="application" name="application" data-required>
+                <option value="" disabled selected>Choisissez une application</option>
+                <option value="restaurant">Gestion Restaurant</option>
+                <option value="quincaillerie">Gestion Quincaillerie</option>
+                <option value="scolaire">Gestion Scolaire</option>
+                <option value="btp">Gestion BTP</option>
+                <option value="pharmacie">Gestion Pharmacie</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="activite">Votre activité</label>
+              <input type="text" id="activite" name="activite" placeholder="Ex. restaurant, quincaillerie, école...">
+            </div>
+
+            <div class="field">
+              <label for="message">Message (optionnel)</label>
+              <textarea id="message" name="message" placeholder="Parlez-nous brièvement de votre besoin..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--block">Demander mon accès gratuit</button>
+
+            <p class="field__hint" style="text-align: center; margin-top: var(--space-3);">
+              En envoyant ce formulaire, vous acceptez d'être recontacté par Exceldoor au sujet de votre demande.
+            </p>
+
+          </form>
+        </div>
+
+        <!-- ÉTAT DE CONFIRMATION (affiché après envoi) -->
+        <div class="form-card form-success" id="form-success" style="display:none;">
+          <div class="form-success__icon">✓</div>
+          <h2>Demande bien reçue</h2>
+          <p>Merci ! Nous avons bien reçu votre demande. Nous vous contactons très prochainement pour créer votre accès et répondre à vos questions.</p>
+          <a href="../" class="btn btn--secondary" style="margin-top: var(--space-4);">Retour à l'accueil</a>
+        </div>
+
+        <div class="reassurance-list">
+          <div class="reassurance-list__item"><span>✓</span><span>Accès gratuit, sans engagement</span></div>
+          <div class="reassurance-list__item"><span>✓</span><span>Nous vous contactons sous peu pour créer votre espace</span></div>
+          <div class="reassurance-list__item"><span>✓</span><span>Vos informations ne sont jamais partagées à des tiers</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <h4>Exceldoor</h4>
+        <p style="color:rgba(255,255,255,0.6); font-size: var(--fs-small);">Des applications simples pour mieux gérer votre activité.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Applications</h4>
+        <ul id="footer-app-links"></ul>
+      </div>
+      <div class="footer__col">
+        <h4>Exceldoor</h4>
+        <ul>
+          <li><a href="../devenir-affilie/">Devenir affilié</a></li>
+          <li><a href="./">Demander un accès</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">© 2026 Exceldoor. Tous droits réservés.</div>
+  </div>
+</footer>
+
+<script src="../js/config/applications.js"></script>
+<script>
+  var footerLinks = document.getElementById('footer-app-links');
+  getActiveApplications().forEach(function (app) {
+    var li = document.createElement('li');
+    li.innerHTML = '<a href="../applications/' + app.slug + '.html">' + app.name + '</a>';
+    footerLinks.appendChild(li);
+  });
+</script>
+<script src="../js/tracking.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/forms.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,610 @@
+/* ==========================================================================
+   EXCELDOOR — COMPOSANTS
+   Bibliothèque de composants partagée par toutes les pages du site.
+   ========================================================================== */
+
+/* --- Boutons --------------------------------------------------------------
+   Un seul CTA principal (vert action) par vue. Le secondaire reste discret. */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 48px;               /* zone tactile confortable au pouce */
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-medium);
+  border: 1px solid transparent;
+  transition: background var(--dur-fast) var(--ease-standard),
+              border-color var(--dur-fast) var(--ease-standard),
+              transform var(--dur-fast) var(--ease-standard);
+  white-space: nowrap;
+}
+.btn:hover { text-decoration: none; }
+.btn:active { transform: scale(0.98); }
+
+.btn--primary {
+  background: var(--cta-bg);
+  color: var(--cta-text);
+}
+.btn--primary:hover { background: var(--cta-bg-hover); }
+
+.btn--secondary {
+  background: transparent;
+  border-color: var(--cta-secondary-border);
+  color: var(--cta-secondary-text);
+}
+.btn--secondary:hover { border-color: var(--color-ink-500); background: var(--color-ink-100); }
+
+.btn--block { width: 100%; }
+
+/* --- Badges (catégorie d'application) -------------------------------------- */
+
+.badge {
+  display: inline-block;
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-medium);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  line-height: 1.4;
+}
+
+/* Une classe par catégorie — voir tokens.css pour les valeurs de couleur.
+   Ajouter une catégorie = ajouter 3 lignes ici + les 3 variables tokens. */
+.badge--restaurant     { background: var(--cat-restaurant-bg);     color: var(--cat-restaurant-text); }
+.badge--quincaillerie  { background: var(--cat-quincaillerie-bg);  color: var(--cat-quincaillerie-text); }
+.badge--scolaire       { background: var(--cat-scolaire-bg);       color: var(--cat-scolaire-text); }
+.badge--btp            { background: var(--cat-btp-bg);            color: var(--cat-btp-text); }
+.badge--pharmacie      { background: var(--cat-pharmacie-bg);      color: var(--cat-pharmacie-text); }
+
+/* --- Carte application ------------------------------------------------------
+   Le "signature element" du design system : une fine ligne de couleur en
+   haut de carte reprend la teinte de la catégorie — repère visuel rapide
+   dans une grille multi-métiers (restaurant / quincaillerie / scolaire /
+   BTP / pharmacie) sans dépendre d'une icône. */
+
+.app-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-page);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--dur-base) var(--ease-standard),
+              transform var(--dur-base) var(--ease-standard);
+}
+.app-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.app-card__accent {
+  height: 4px;
+  width: 100%;
+}
+.app-card__accent--restaurant    { background: var(--cat-restaurant-line); }
+.app-card__accent--quincaillerie { background: var(--cat-quincaillerie-line); }
+.app-card__accent--scolaire      { background: var(--cat-scolaire-line); }
+.app-card__accent--btp           { background: var(--cat-btp-line); }
+.app-card__accent--pharmacie     { background: var(--cat-pharmacie-line); }
+
+.app-card__media {
+  aspect-ratio: 16 / 10;
+  background: var(--color-ink-100);
+  overflow: hidden;
+}
+.app-card__media img { width: 100%; height: 100%; object-fit: cover; }
+
+.app-card__body {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1;
+}
+.app-card__title { font-size: var(--fs-h3); font-weight: var(--fw-bold); margin: 0; }
+.app-card__desc { font-size: var(--fs-small); color: var(--text-secondary); margin: 0; flex: 1; }
+.app-card__cta {
+  margin-top: var(--space-2);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+  color: var(--text-link);
+}
+
+/* --- État de confirmation (formulaire envoyé) -------------------------------- */
+
+.form-success {
+  text-align: center;
+  padding: var(--space-7) var(--space-4);
+}
+.form-success__icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--color-action-50);
+  color: var(--color-action-800);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto var(--space-4);
+  font-size: 1.5rem;
+  font-weight: var(--fw-bold);
+}
+.form-success h2 { margin-bottom: var(--space-2); }
+.form-success p { max-width: 420px; margin-left: auto; margin-right: auto; }
+
+.form-card {
+  background: var(--bg-page);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-5);
+}
+@media (min-width: 700px) {
+  .form-card { padding: var(--space-6); }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 var(--space-4);
+}
+@media (min-width: 600px) {
+  .form-row { grid-template-columns: 1fr 1fr; }
+}
+
+.reassurance-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+.reassurance-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+.reassurance-list__item span:first-child {
+  color: var(--color-action-600);
+  font-weight: var(--fw-bold);
+  flex-shrink: 0;
+}
+
+/* --- Bloc scindé texte/visuel (Problème / Solution) ------------------------- */
+
+.split-block {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  align-items: center;
+}
+@media (min-width: 800px) {
+  .split-block { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+  .split-block--reverse .split-block__visual { order: 2; }
+}
+.split-block__visual {
+  aspect-ratio: 16 / 10;
+  background: var(--color-ink-100);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+}
+.split-block__visual img { width: 100%; height: 100%; object-fit: contain; }
+.split-block__eyebrow {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+  color: var(--color-action-600);
+  display: block;
+  margin-bottom: var(--space-2);
+}
+.split-block h2 { margin-bottom: var(--space-3); }
+
+/* --- Galerie de captures d'écran --------------------------------------------- */
+
+.screenshot-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+@media (min-width: 600px) {
+  .screenshot-gallery { grid-template-columns: repeat(3, 1fr); }
+}
+.screenshot-gallery__item {
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-ink-100);
+  border: 1px solid var(--border-light);
+}
+.screenshot-gallery__item img { width: 100%; height: 100%; object-fit: contain; }
+
+/* --- Liste de fonctionnalités (avec coche) ----------------------------------- */
+
+.feature-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+@media (min-width: 700px) {
+  .feature-list { grid-template-columns: 1fr 1fr; }
+}
+.feature-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--fs-body);
+  color: var(--text-primary);
+}
+.feature-list__check {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--color-action-50);
+  color: var(--color-action-800);
+  display: flex; align-items: center; justify-content: center;
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-bold);
+  margin-top: 2px;
+}
+
+/* --- Filtres (catalogue) ----------------------------------------------- */
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+.filter-pill {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-default);
+  background: var(--bg-page);
+  color: var(--text-secondary);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+  transition: background var(--dur-fast) var(--ease-standard),
+              border-color var(--dur-fast) var(--ease-standard),
+              color var(--dur-fast) var(--ease-standard);
+}
+.filter-pill:hover { border-color: var(--color-ink-500); }
+.filter-pill[aria-pressed="true"] {
+  background: var(--color-primary-800);
+  border-color: var(--color-primary-800);
+  color: var(--text-inverse);
+}
+
+.empty-state {
+  text-align: center;
+  padding: var(--space-7) var(--space-3);
+  color: var(--text-muted);
+}
+
+/* --- Grille de cartes -------------------------------------------------- */
+
+.app-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+@media (min-width: 600px) {
+  .app-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 960px) {
+  .app-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* --- Navigation ----------------------------------------------------------- */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--border-light);
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav__logo {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+}
+.nav__logo:hover { text-decoration: none; }
+.nav__links {
+  display: none;
+  align-items: center;
+  gap: var(--space-5);
+}
+.nav__links a { color: var(--text-primary); font-weight: var(--fw-medium); font-size: var(--fs-small); }
+.nav__actions { display: flex; align-items: center; gap: var(--space-3); }
+.nav__toggle {
+  display: inline-flex;
+  background: none;
+  border: none;
+  padding: var(--space-2);
+}
+@media (min-width: 960px) {
+  .nav__links { display: flex; }
+  .nav__toggle { display: none; }
+}
+
+/* Menu mobile plein écran (JS ajoute .is-open sur <body>) */
+.nav__mobile {
+  display: none;
+  position: fixed;
+  inset: 64px 0 0 0;
+  background: var(--bg-page);
+  padding: var(--space-5) var(--container-pad);
+  overflow-y: auto;
+  z-index: 39;
+}
+.nav__mobile a {
+  display: block;
+  padding: var(--space-3) 0;
+  font-size: var(--fs-h3);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-light);
+}
+body.is-nav-open .nav__mobile { display: block; }
+body.is-nav-open { overflow: hidden; }
+
+/* --- Footer ---------------------------------------------------------------- */
+
+.footer {
+  background: var(--bg-dark);
+  color: rgba(255,255,255,0.72);
+  padding: var(--space-6) 0 var(--space-4);
+}
+.footer a { color: rgba(255,255,255,0.92); }
+.footer__grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: 1fr;
+  margin-bottom: var(--space-5);
+}
+@media (min-width: 700px) {
+  .footer__grid { grid-template-columns: 2fr 1fr 1fr; }
+}
+.footer__col h4 { color: var(--text-inverse); margin-bottom: var(--space-2); }
+.footer__col ul li { margin-bottom: var(--space-2); font-size: var(--fs-small); }
+.footer__bottom {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: var(--space-3);
+  font-size: var(--fs-caption);
+}
+
+/* --- Formulaires ------------------------------------------------------------ */
+
+.field { margin-bottom: var(--space-4); }
+.field label {
+  display: block;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-page);
+  color: var(--text-primary);
+  transition: border-color var(--dur-fast) var(--ease-standard);
+}
+.field textarea { min-height: 120px; padding: var(--space-3); resize: vertical; }
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--color-primary-600);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-50);
+}
+.field__hint { font-size: var(--fs-caption); color: var(--text-muted); margin-top: var(--space-1); }
+.field__error { font-size: var(--fs-caption); color: var(--color-error); margin-top: var(--space-1); }
+
+/* Honeypot anti-spam — invisible pour un humain, piège pour un bot (§36) */
+.field--honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* --- Composant vidéo (§12) ---------------------------------------------------
+   Ratio 16:9, miniature cliquable, iframe chargée seulement au clic
+   (perf mobile — §31). Voir js/components/video-player.js */
+
+.video-embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-ink-900);
+}
+.video-embed__thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+.video-embed__play {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+}
+.video-embed__play::before {
+  content: "";
+  border-style: solid;
+  border-width: 10px 0 10px 16px;
+  border-color: transparent transparent transparent var(--color-primary-800);
+  margin-left: 4px;
+}
+.video-embed iframe { width: 100%; height: 100%; border: none; }
+
+/* --- FAQ (accordéon) --------------------------------------------------------- */
+
+.faq-item {
+  border-bottom: 1px solid var(--border-light);
+}
+.faq-item__q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: var(--fs-body-lg);
+  font-weight: var(--fw-medium);
+  color: var(--text-primary);
+}
+.faq-item__icon { flex-shrink: 0; transition: transform var(--dur-base) var(--ease-standard); }
+.faq-item[data-open="true"] .faq-item__icon { transform: rotate(45deg); }
+.faq-item__a {
+  display: none;
+  padding: 0 0 var(--space-4);
+  color: var(--text-secondary);
+}
+.faq-item[data-open="true"] .faq-item__a { display: block; }
+
+/* --- Hero ------------------------------------------------------------------- */
+
+.hero {
+  padding: var(--space-6) 0 var(--space-5);
+}
+.hero__eyebrow {
+  display: inline-block;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-medium);
+  color: var(--color-action-600);
+  margin-bottom: var(--space-3);
+}
+.hero h1 { margin-bottom: var(--space-3); max-width: 720px; }
+.hero__lead {
+  font-size: var(--fs-body-lg);
+  color: var(--text-secondary);
+  max-width: 560px;
+  margin-bottom: var(--space-5);
+}
+.hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 340px;
+}
+.hero__trust {
+  margin-top: var(--space-5);
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
+@media (min-width: 600px) {
+  .hero__actions { flex-direction: row; max-width: none; }
+}
+@media (min-width: 960px) {
+  .hero { padding: var(--space-8) 0 var(--space-6); }
+}
+
+/* --- Grille de bénéfices / fonctionnalités ---------------------------------- */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+@media (min-width: 600px) {
+  .feature-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 960px) {
+  .feature-grid { grid-template-columns: repeat(4, 1fr); }
+}
+.feature-item {
+  padding: var(--space-4);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  background: var(--bg-page);
+}
+.feature-item__icon {
+  width: 40px; height: 40px;
+  border-radius: var(--radius-sm);
+  background: var(--color-action-50);
+  color: var(--color-action-800);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-3);
+}
+.feature-item h4 { margin-bottom: var(--space-1); }
+.feature-item p { font-size: var(--fs-small); margin: 0; }
+
+/* --- Étapes numérotées (fonctionnement) --------------------------------------
+   Légitime ici : §4 décrit un vrai processus séquentiel (le visiteur suit ces
+   étapes dans cet ordre précis), donc la numérotation porte une information
+   réelle et n'est pas décorative. */
+
+.steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  counter-reset: step;
+}
+@media (min-width: 700px) {
+  .steps { grid-template-columns: repeat(4, 1fr); }
+}
+.step-item {
+  position: relative;
+  padding-top: var(--space-6);
+}
+.step-item::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  top: 0; left: 0;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--color-primary-800);
+  color: var(--text-inverse);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-body);
+}
+.step-item h4 { margin-bottom: var(--space-1); }
+.step-item p { font-size: var(--fs-small); margin: 0; }
+
+/* --- Section CTA finale ------------------------------------------------------ */
+
+.cta-section {
+  background: var(--bg-dark);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-4);
+  text-align: center;
+}
+.cta-section h2 { color: var(--text-inverse); }
+.cta-section p { color: rgba(255,255,255,0.75); max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-section .btn { margin-top: var(--space-4); }

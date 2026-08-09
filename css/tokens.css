@@ -1,0 +1,133 @@
+/* ==========================================================================
+   EXCELDOOR — DESIGN TOKENS
+   Source unique de vérité pour les couleurs, la typographie, les espacements.
+   Toutes les autres feuilles de style consomment ces variables — ne jamais
+   coder une couleur ou une taille "en dur" ailleurs.
+   ========================================================================== */
+
+:root {
+
+  /* --- Couleurs primaires ---------------------------------------------- */
+  /* Bleu profond : confiance, sérieux professionnel. Couleur de marque. */
+  --color-primary-900: #042c53;
+  --color-primary-800: #0c447c;
+  --color-primary-600: #185fa5;
+  --color-primary-400: #378add;
+  --color-primary-200: #85b7eb;
+  --color-primary-100: #b5d4f4;
+  --color-primary-50:  #e6f1fb;
+
+  /* Vert émeraude : action, CTA, réussite. Couleur de conversion. */
+  --color-action-900: #04342c;
+  --color-action-800: #085041;
+  --color-action-600: #0f6e56;
+  --color-action-400: #1d9e75;
+  --color-action-200: #5dcaa5;
+  --color-action-100: #9fe1cb;
+  --color-action-50:  #e1f5ee;
+
+  /* Corail : signal, mise en avant ponctuelle. À utiliser avec parcimonie. */
+  --color-signal-900: #4a1b0c;
+  --color-signal-800: #712b13;
+  --color-signal-600: #993c1d;
+  --color-signal-400: #d85a30;
+  --color-signal-200: #f0997b;
+  --color-signal-100: #f5c4b3;
+  --color-signal-50:  #faece7;
+
+  /* --- Couleurs par catégorie d'application ------------------------------
+     Chaque métier a sa propre teinte d'accent (badge, bordure de carte).
+     Permet d'identifier visuellement une application au premier coup d'œil
+     dans le catalogue, sans dépendre d'une icône ou d'une image. */
+  --cat-restaurant-bg:   #faece7; --cat-restaurant-text:   #712b13; --cat-restaurant-line: #d85a30;
+  --cat-quincaillerie-bg:#faeeda; --cat-quincaillerie-text:#633806; --cat-quincaillerie-line:#ba7517;
+  --cat-scolaire-bg:     #e6f1fb; --cat-scolaire-text:     #0c447c; --cat-scolaire-line:   #378add;
+  --cat-btp-bg:          #f1efe8; --cat-btp-text:          #444441; --cat-btp-line:        #888780;
+  --cat-pharmacie-bg:    #e1f5ee; --cat-pharmacie-text:    #085041; --cat-pharmacie-line:  #1d9e75;
+
+  /* --- Neutres ------------------------------------------------------------ */
+  --color-ink-900: #14181f;   /* texte principal */
+  --color-ink-700: #3a4250;   /* texte secondaire */
+  --color-ink-500: #6b7280;   /* texte tertiaire / hints */
+  --color-ink-300: #d3d7de;   /* bordures */
+  --color-ink-200: #e7e9ee;   /* bordures légères */
+  --color-ink-100: #f4f5f7;   /* fond de section alterné */
+  --color-white:   #ffffff;
+
+  /* --- États sémantiques -------------------------------------------------- */
+  --color-success: var(--color-action-600);
+  --color-error:   #b3261e;
+  --color-warning: #a3610b;
+
+  /* --- Rôles fonctionnels (ce que le CSS applicatif doit lire) ------------ */
+  --bg-page:        var(--color-white);
+  --bg-section-alt: var(--color-ink-100);
+  --bg-dark:        var(--color-primary-900);
+
+  --text-primary:   var(--color-ink-900);
+  --text-secondary: var(--color-ink-700);
+  --text-muted:     var(--color-ink-500);
+  --text-inverse:   var(--color-white);
+  --text-link:      var(--color-primary-600);
+
+  --border-default: var(--color-ink-300);
+  --border-light:   var(--color-ink-200);
+
+  --cta-bg:         var(--color-action-600);
+  --cta-bg-hover:   var(--color-action-800);
+  --cta-text:       var(--color-white);
+
+  --cta-secondary-border: var(--color-ink-300);
+  --cta-secondary-text:   var(--text-primary);
+
+  /* --- Typographie ---------------------------------------------------- */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --fs-display: clamp(2rem, 1.6rem + 2vw, 3.25rem);   /* H1 hero */
+  --fs-h1:      clamp(1.75rem, 1.5rem + 1.2vw, 2.5rem);
+  --fs-h2:      clamp(1.375rem, 1.25rem + 0.6vw, 1.75rem);
+  --fs-h3:      1.25rem;
+  --fs-body-lg: 1.125rem;
+  --fs-body:    1rem;
+  --fs-small:   0.875rem;
+  --fs-caption: 0.75rem;
+
+  --lh-tight:  1.2;
+  --lh-normal: 1.5;
+  --lh-loose:  1.7;
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-bold:    700;
+
+  /* --- Espacements (échelle 4/8/16/24/32/48/64/96) ---------------------- */
+  --space-1:  0.25rem;  /* 4px */
+  --space-2:  0.5rem;   /* 8px */
+  --space-3:  1rem;     /* 16px */
+  --space-4:  1.5rem;   /* 24px */
+  --space-5:  2rem;     /* 32px */
+  --space-6:  3rem;     /* 48px */
+  --space-7:  4rem;     /* 64px */
+  --space-8:  6rem;     /* 96px */
+
+  /* --- Rayons / ombres --------------------------------------------------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 1px 2px rgba(20, 24, 31, 0.04), 0 4px 16px rgba(20, 24, 31, 0.06);
+  --shadow-card-hover: 0 2px 4px rgba(20, 24, 31, 0.06), 0 12px 32px rgba(20, 24, 31, 0.10);
+
+  /* --- Grille / largeur de contenu ---------------------------------------- */
+  --container-max: 1160px;
+  --container-pad: 1.25rem;
+
+  /* --- Transitions --------------------------------------------------------- */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+
+  /* --- Breakpoints (référence — utilisés dans les media queries) --------- */
+  /* mobile: 0-599px | tablette: 600-959px | desktop: 960px+ */
+}

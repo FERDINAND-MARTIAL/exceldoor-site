@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toutes nos applications — Exceldoor</title>
+<meta name="description" content="Découvrez toutes les applications Exceldoor : gestion restaurant, quincaillerie, scolaire, BTP, pharmacie. Demandez votre accès gratuit.">
+
+<meta property="og:title" content="Toutes nos applications — Exceldoor">
+<meta property="og:description" content="Des applications de gestion simples, pensées pour votre métier.">
+<meta property="og:image" content="https://exceldoor.fr/assets/images/og/applications.jpg">
+<meta property="og:url" content="https://exceldoor.fr/applications/">
+<meta property="og:type" content="website">
+
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+
+<a href="#main" class="visually-hidden">Aller au contenu principal</a>
+
+<nav class="nav">
+  <div class="container nav__inner">
+    <a href="../" class="nav__logo">Exceldoor</a>
+    <div class="nav__links">
+      <a href="./" aria-current="page">Applications</a>
+      <a href="../devenir-affilie/">Devenir affilié</a>
+      <a href="../demande-acces/">Demander un accès</a>
+    </div>
+    <div class="nav__actions">
+      <a href="../demande-acces/" class="btn btn--primary">Demander mon accès</a>
+      <button class="nav__toggle" data-nav-toggle aria-label="Ouvrir le menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="nav__mobile">
+    <a href="./">Applications</a>
+    <a href="../devenir-affilie/">Devenir affilié</a>
+    <a href="../demande-acces/">Demander un accès</a>
+    <button data-nav-close class="btn btn--secondary btn--block" style="margin-top: var(--space-4);">Fermer</button>
+  </div>
+</nav>
+
+<main id="main">
+
+  <section class="hero" style="padding-bottom: var(--space-4);">
+    <div class="container">
+      <span class="hero__eyebrow">Catalogue</span>
+      <h1 style="font-size: var(--fs-h1);">Toutes nos applications</h1>
+      <p class="hero__lead">Cinq applications métiers, chacune pensée pour un secteur précis. Choisissez la vôtre pour découvrir ses fonctionnalités et demander votre accès gratuit.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+
+      <div class="filter-bar" role="group" aria-label="Filtrer par catégorie" id="filter-bar">
+        <button class="filter-pill" aria-pressed="true" data-filter="all">Toutes</button>
+        <!-- les autres pastilles sont générées dynamiquement depuis applications.js -->
+      </div>
+
+      <div class="app-grid" id="app-grid"></div>
+
+      <div class="empty-state" id="empty-state" style="display:none;">
+        <p>Aucune application dans cette catégorie pour le moment.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="cta-section">
+        <h2>Vous ne savez pas laquelle choisir ?</h2>
+        <p>Décrivez-nous votre activité, nous vous orientons vers l'application adaptée.</p>
+        <a href="../demande-acces/" class="btn btn--primary">Demander mon accès gratuit</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <h4>Exceldoor</h4>
+        <p style="color:rgba(255,255,255,0.6); font-size: var(--fs-small);">Des applications simples pour mieux gérer votre activité.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Applications</h4>
+        <ul id="footer-app-links"></ul>
+      </div>
+      <div class="footer__col">
+        <h4>Exceldoor</h4>
+        <ul>
+          <li><a href="../devenir-affilie/">Devenir affilié</a></li>
+          <li><a href="../demande-acces/">Demander un accès</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">© 2026 Exceldoor. Tous droits réservés.</div>
+  </div>
+</footer>
+
+<script src="../js/config/applications.js"></script>
+<script>
+  var apps = getActiveApplications();
+  var grid = document.getElementById('app-grid');
+  var emptyState = document.getElementById('empty-state');
+  var filterBar = document.getElementById('filter-bar');
+  var footerLinks = document.getElementById('footer-app-links');
+
+  // Construit dynamiquement une pastille de filtre par catégorie présente
+  var seenCategories = {};
+  apps.forEach(function (app) {
+    if (!seenCategories[app.categoryKey]) {
+      seenCategories[app.categoryKey] = app.category;
+      var pill = document.createElement('button');
+      pill.className = 'filter-pill';
+      pill.setAttribute('aria-pressed', 'false');
+      pill.setAttribute('data-filter', app.categoryKey);
+      pill.textContent = app.category;
+      filterBar.appendChild(pill);
+    }
+
+    var li = document.createElement('li');
+    li.innerHTML = '<a href="' + app.slug + '.html">' + app.name + '</a>';
+    footerLinks.appendChild(li);
+  });
+
+  function renderCards(filterKey) {
+    grid.innerHTML = '';
+    var visible = apps.filter(function (app) {
+      return filterKey === 'all' || app.categoryKey === filterKey;
+    });
+
+    emptyState.style.display = visible.length === 0 ? 'block' : 'none';
+
+    visible.forEach(function (app) {
+      var card = document.createElement('div');
+      card.className = 'app-card';
+      card.innerHTML =
+        '<div class="app-card__accent app-card__accent--' + app.categoryKey + '"></div>' +
+        '<div class="app-card__body">' +
+          '<span class="badge badge--' + app.categoryKey + '">' + app.category + '</span>' +
+          '<h3 class="app-card__title">' + app.name + '</h3>' +
+          '<p class="app-card__desc">' + app.shortDescription + '</p>' +
+          '<a href="' + app.slug + '.html" class="app-card__cta">Découvrir l\'application →</a>' +
+        '</div>';
+      grid.appendChild(card);
+    });
+  }
+
+  filterBar.addEventListener('click', function (e) {
+    var btn = e.target.closest('.filter-pill');
+    if (!btn) return;
+
+    filterBar.querySelectorAll('.filter-pill').forEach(function (p) {
+      p.setAttribute('aria-pressed', 'false');
+    });
+    btn.setAttribute('aria-pressed', 'true');
+
+    renderCards(btn.getAttribute('data-filter'));
+  });
+
+  renderCards('all');
+</script>
+<script src="../js/tracking.js"></script>
+<script src="../js/main.js"></script>
+
+</body>
+</html>
