@@ -46,41 +46,19 @@
 <main id="main">
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero hero--with-visual">
     <div class="container">
-      <span class="badge badge--scolaire" style="margin-bottom: var(--space-3);">Éducation</span>
-      <h1>Gestion Scolaire</h1>
-      <p class="hero__lead">Votre école a ses habitudes : son calendrier, ses frais, ses bulletins. Gestion Scolaire s'adapte à votre façon de travailler, pas l'inverse.</p>
-      <div class="hero__actions">
-        <a href="../demande-acces/?app=scolaire" class="btn btn--primary">Demander mon accès gratuit</a>
-        <a href="#video" class="btn btn--secondary">Voir la démo</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROBLÈME -->
-  <section class="section">
-    <div class="container">
-      <div style="max-width: 640px;">
-        <span class="split-block__eyebrow">Le quotidien, aujourd'hui</span>
-        <h2>Moins de cahiers, moins de calculs, moins d'oublis</h2>
-        <p>Un directeur passe souvent ses journées à chercher une information qu'il possède déjà : dans un registre, dans un classeur, dans la tête d'une secrétaire. Les additions se refont à la calculatrice, les moyennes se recopient à la main, et les retards de paiement se découvrent trop tard.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOLUTION -->
-  <section class="section section--alt">
-    <div class="container">
-      <div class="split-block split-block--reverse">
-        <div>
-          <span class="split-block__eyebrow">La solution</span>
-          <h2>Le logiciel s'adapte à votre école, pas l'inverse</h2>
-          <p>Votre calendrier, vos frais, vos tarifs par classe, votre notation, vos documents : tout se configure autour de votre façon de faire actuelle. Les totaux se calculent seuls, la situation d'un élève s'affiche en deux secondes, et les retards de paiement remontent chaque matin.</p>
+      <div>
+        <span class="badge badge--scolaire" style="margin-bottom: var(--space-3);">Éducation</span>
+        <h1>Gestion Scolaire</h1>
+        <p class="hero__lead">Votre école a ses habitudes : son calendrier, ses frais, ses bulletins. Gestion Scolaire s'adapte à votre façon de travailler, pas l'inverse.</p>
+        <div class="hero__actions">
+          <a href="../demande-acces/?app=scolaire" class="btn btn--primary">Demander mon accès gratuit</a>
+          <a href="#video" class="btn btn--secondary">Voir la démo</a>
         </div>
-        <div class="split-block__visual">
-          <img src="../assets/images/apps/scolaire-tableau-bord.png" alt="Tableau de bord de Gestion Scolaire, avec élèves inscrits, classes actives et montants encaissés" loading="lazy">
-        </div>
+      </div>
+      <div class="hero__visual">
+        <img src="../assets/images/apps/scolaire-tableau-bord.png" alt="Tableau de bord de Gestion Scolaire, avec élèves inscrits, classes actives et montants encaissés" loading="lazy">
       </div>
     </div>
   </section>
@@ -101,8 +79,54 @@
     </div>
   </section>
 
-  <!-- FONCTIONNALITÉS -->
+  <!-- SOLUTION -->
   <section class="section section--alt">
+    <div class="container">
+      <div class="split-block split-block--reverse">
+        <div>
+          <span class="split-block__eyebrow">La solution</span>
+          <h2>Le logiciel s'adapte à votre école, pas l'inverse</h2>
+          <p>Un directeur passe souvent ses journées à chercher une information qu'il possède déjà, dans un registre, dans un classeur, dans la tête d'une secrétaire. Votre calendrier, vos frais, vos tarifs par classe : tout se configure autour de votre façon de faire actuelle. Les totaux se calculent seuls, et les retards de paiement remontent chaque matin.</p>
+        </div>
+        <div class="split-block__visual">
+          <img src="../assets/images/apps/scolaire-finances.png" alt="Écran Finances avec total attendu, total encaissé et solde par élève" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FONCTIONNALITÉ EN VEDETTE 1 -->
+  <section class="section">
+    <div class="container">
+      <div class="feature-spotlight">
+        <div>
+          <p class="feature-spotlight__statement">La situation d'un élève s'affiche <strong>en deux secondes</strong>.</p>
+          <p>Cycle, classe, statut : la liste des élèves inscrits se filtre en un instant. Plus besoin de feuilleter un registre pour savoir qui est inscrit où, et dans quel état se trouve son dossier.</p>
+        </div>
+        <div class="feature-spotlight__visual">
+          <img src="../assets/images/apps/scolaire-eleves.png" alt="Liste des élèves inscrits par classe avec statut" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FONCTIONNALITÉ EN VEDETTE 2 -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="feature-spotlight feature-spotlight--reverse">
+        <div>
+          <p class="feature-spotlight__statement">Un parent verse un acompte, <strong>le logiciel fait la répartition</strong>.</p>
+          <p>Chaque paiement se répartit automatiquement sur l'échéancier, mois par mois. Vous saisissez le montant versé, l'application calcule ce qui est soldé et ce qu'il reste à payer.</p>
+        </div>
+        <div class="feature-spotlight__visual">
+          <img src="../assets/images/apps/scolaire-fiche-financiere.png" alt="Fiche financière d'un élève avec échéancier mois par mois" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FONCTIONNALITÉS -->
+  <section class="section">
     <div class="container">
       <div class="section__head">
         <span class="section__eyebrow">Fonctionnalités</span>
@@ -133,21 +157,6 @@
           <span class="feature-list__check">✓</span>
           <span>Documents officiels prêts à imprimer, à l'entête de votre école</span>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CAPTURES D'ÉCRAN -->
-  <section class="section">
-    <div class="container">
-      <div class="section__head">
-        <span class="section__eyebrow">Aperçu</span>
-        <h2>À quoi ressemble l'application</h2>
-      </div>
-      <div class="screenshot-gallery">
-        <div class="screenshot-gallery__item"><img src="../assets/images/apps/scolaire-finances.png" alt="Écran Finances avec total attendu, total encaissé et solde par élève" loading="lazy"></div>
-        <div class="screenshot-gallery__item"><img src="../assets/images/apps/scolaire-eleves.png" alt="Liste des élèves inscrits par classe avec statut" loading="lazy"></div>
-        <div class="screenshot-gallery__item"><img src="../assets/images/apps/scolaire-fiche-financiere.png" alt="Fiche financière d'un élève avec échéancier mois par mois" loading="lazy"></div>
       </div>
     </div>
   </section>
@@ -235,7 +244,7 @@
   </section>
 
   <!-- FAQ -->
-  <section class="section">
+  <section class="section section--alt">
     <div class="container">
       <div class="section__head">
         <span class="section__eyebrow">Questions fréquentes</span>
