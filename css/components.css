@@ -172,6 +172,45 @@
   flex-shrink: 0;
 }
 
+/* --- Fonctionnalité en vedette (grand format) --------------------------------
+   Inspiré du pattern Odoo : une fonctionnalité clé mérite sa propre section
+   avec un titre percutant et une image en grand format, plutôt que d'être
+   noyée dans une petite galerie. À réserver à 2-3 fonctionnalités maximum
+   par page application — sinon l'effet de mise en avant se dilue. */
+
+.feature-spotlight {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .feature-spotlight { grid-template-columns: 0.9fr 1.1fr; gap: var(--space-6); }
+  .feature-spotlight--reverse .feature-spotlight__visual { order: 2; }
+}
+.feature-spotlight__statement {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+.feature-spotlight__statement strong {
+  color: var(--color-primary-800);
+}
+.feature-spotlight__visual {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-card);
+  background: var(--color-ink-100);
+}
+.feature-spotlight__visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* --- Bloc scindé texte/visuel (Problème / Solution) ------------------------- */
 
 .split-block {
