@@ -571,6 +571,30 @@ body.is-nav-open { overflow: hidden; }
   .hero { padding: var(--space-8) 0 var(--space-6); }
 }
 
+/* --- Variante hero avec visuel (2 colonnes desktop) -------------------------- */
+
+.hero--with-visual .container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .hero--with-visual .container { grid-template-columns: 1.1fr 0.9fr; gap: var(--space-6); }
+}
+.hero__visual {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-card);
+  background: var(--color-ink-100);
+}
+.hero__visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* --- Grille de bénéfices / fonctionnalités ---------------------------------- */
 
 .feature-grid {
